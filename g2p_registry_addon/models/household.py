@@ -180,4 +180,5 @@ class G2PRegisterHousehold(models.Model):
         string="Mobile Phone Type",
     )
 
-    is_husband_dead = fields.Boolean(string="Is Husband Dead")
+    husband_dead = fields.Boolean(string="Is Husband Dead")
+    husband_death_date = fields.Datetime(string="Husband Death Date")

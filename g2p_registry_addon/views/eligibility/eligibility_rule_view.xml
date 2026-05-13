@@ -14,6 +14,11 @@
                        options="{'model': 'g2p.register.families'}"
                        invisible="target_registry != 'families'"/>
 
+                <!-- Domain widget for the 'household' type -->
+                <field name="pbms_domain" widget="domain"
+                       options="{'model': 'g2p.register.household'}"
+                       invisible="target_registry != 'household'"/>
+
                 <!-- Domain widget for the 'family_members' type -->
                 <!-- <field name="pbms_domain" widget="domain"
                        options="{'model': 'g2p.register.family.members'}"
