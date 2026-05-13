@@ -3,9 +3,9 @@ from odoo import models, fields
 from .registry import G2PRegistry
 
 
-class G2PHouseholdRegistry(models.Model):
-    _name = "g2p.household.registry"
-    _description = "Household Registry"
+class G2PRegisterHousehold(models.Model):
+    _name = "g2p.register.household"
+    _description = "Register Household"
     _inherit = "g2p.registry"
 
     # G2PRegister fields
