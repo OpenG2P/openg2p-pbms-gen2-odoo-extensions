@@ -14,4 +14,9 @@
               parent="g2p_pbms.menu_g2p_registry"
               action="action_g2p_register_families"
               sequence="3"/>
+    <menuitem id="menu_g2p_register_household"
+              name="Register Household"
+              parent="g2p_pbms.menu_g2p_registry"
+              action="action_g2p_register_household"
+              sequence="4"/>
 </odoo>
