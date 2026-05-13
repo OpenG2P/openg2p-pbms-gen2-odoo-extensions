@@ -48,6 +48,7 @@
                         <field name="lighting_source"/>
                         <field name="cooking_fuel_type"/>
                         <field name="mobile_phone_type"/>
+                        <field name="is_husband_dead"/>
                     </group>
                     <group string="Geo">
                         <field name="latitude"/>
