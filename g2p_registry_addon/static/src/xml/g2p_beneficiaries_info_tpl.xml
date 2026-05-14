@@ -49,11 +49,34 @@
                                 <th class="px-3 py-2">Ethnic Group</th>
                                 <th class="px-3 py-2 text-center"># Children</th>
                             </t>
+                            <t t-if="state.target_registry === 'households'">
+                                <th class="px-3 py-2">Internal ID</th>
+                                <th class="px-3 py-2">Functional ID</th>
+                                <th class="px-3 py-2">Head Name</th>
+                                <th class="px-3 py-2">Headship</th>
+                                <th class="px-3 py-2 text-center">Size</th>
+                                <th class="px-3 py-2 text-center">Children U5</th>
+                                <th class="px-3 py-2 text-center">Elderly</th>
+                                <th class="px-3 py-2 text-center">Female</th>
+                                <th class="px-3 py-2 text-center">Male</th>
+                                <th class="px-3 py-2">Dwelling</th>
+                                <th class="px-3 py-2">Tenure</th>
+                                <th class="px-3 py-2 text-center">Rooms</th>
+                                <th class="px-3 py-2 text-end">Overcrowding</th>
+                                <th class="px-3 py-2">Water</th>
+                                <th class="px-3 py-2">Sanitation</th>
+                                <th class="px-3 py-2">Lighting</th>
+                                <th class="px-3 py-2">Cooking Fuel</th>
+                                <th class="px-3 py-2">Address 1</th>
+                                <th class="px-3 py-2">Address 2</th>
+                                <th class="px-3 py-2">Postal</th>
+                                <th class="px-3 py-2">Country</th>
+                            </t>
                         </tr>
                     </thead>
                     <tbody>
                         <t t-if="state.records and state.records.length">
-                            <t t-foreach="state.records" t-as="record" t-key="record.id">
+                            <t t-foreach="state.records" t-as="record" t-key="record.internal_record_id || record.functional_record_id || record_index">
                                 <tr>
                                     <t t-if="state.target_registry === 'families'">
                                         <td class="px-3 py-2 fw-semibold text-primary">
@@ -80,12 +103,43 @@
                                             </span>
                                         </td>
                                     </t>
+                                    <t t-if="state.target_registry === 'households'">
+                                        <td class="px-3 py-2 text-muted small"><t t-esc="record.internal_record_id"/></td>
+                                        <td class="px-3 py-2 fw-semibold text-primary"><t t-esc="record.functional_record_id"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.household_head_name"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.headship_type"/></td>
+                                        <td class="px-3 py-2 text-center"><t t-esc="record.size_total"/></td>
+                                        <td class="px-3 py-2 text-center"><t t-esc="record.size_children_u5"/></td>
+                                        <td class="px-3 py-2 text-center"><t t-esc="record.size_elderly"/></td>
+                                        <td class="px-3 py-2 text-center"><t t-esc="record.number_of_female_members"/></td>
+                                        <td class="px-3 py-2 text-center"><t t-esc="record.number_of_male_members"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.dwelling_type"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.tenure_status"/></td>
+                                        <td class="px-3 py-2 text-center"><t t-esc="record.rooms_count"/></td>
+                                        <td class="px-3 py-2 text-end"><t t-esc="record.overcrowding_indicator"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.water_source_type"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.sanitation_type"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.lighting_source"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.cooking_fuel_type"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.address_line_1"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.address_line_2"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.postal_code"/></td>
+                                        <td class="px-3 py-2"><t t-esc="record.country_code"/></td>
+                                    </t>
                                 </tr>
                             </t>
                         </t>
                         <t t-else="">
                             <tr>
-                                <td colspan="9" class="text-center text-muted py-4">
+                                <td t-if="state.target_registry === 'households'" colspan="21" class="text-center text-muted py-4">
+                                    <i class="fa fa-inbox fa-2x d-block mb-2"/>
+                                    No records found.
+                                </td>
+                                <td t-elif="state.target_registry === 'families'" colspan="9" class="text-center text-muted py-4">
+                                    <i class="fa fa-inbox fa-2x d-block mb-2"/>
+                                    No records found.
+                                </td>
+                                <td t-else="" colspan="9" class="text-center text-muted py-4">
                                     <i class="fa fa-inbox fa-2x d-block mb-2"/>
                                     No records found.
                                 </td>
