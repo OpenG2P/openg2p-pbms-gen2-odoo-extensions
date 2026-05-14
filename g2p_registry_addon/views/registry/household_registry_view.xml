@@ -2,13 +2,13 @@
 <odoo>
     <record id="action_g2p_register_household" model="ir.actions.act_window">
         <field name="name">Register Household</field>
-        <field name="res_model">g2p.register.household</field>
+        <field name="res_model">g2p.register.households</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <record id="view_g2p_register_household_form" model="ir.ui.view">
-        <field name="name">g2p.register.household.form</field>
-        <field name="model">g2p.register.household</field>
+        <field name="name">g2p.register.households.form</field>
+        <field name="model">g2p.register.households</field>
         <field name="arch" type="xml">
             <form string="G2P Register Household" create="0">
                 <sheet>
@@ -66,8 +66,8 @@
     </record>
 
     <record id="view_g2p_register_household_tree" model="ir.ui.view">
-        <field name="name">g2p.register.household.tree</field>
-        <field name="model">g2p.register.household</field>
+        <field name="name">g2p.register.households.tree</field>
+        <field name="model">g2p.register.households</field>
         <field name="arch" type="xml">
             <tree string="G2P Register Household" create="0">
                 <field name="internal_record_id"/>
