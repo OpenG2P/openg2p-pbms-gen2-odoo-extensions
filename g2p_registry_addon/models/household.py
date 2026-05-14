@@ -4,7 +4,7 @@ from .registry import G2PRegistry
 
 
 class G2PRegisterHousehold(models.Model):
-    _name = "g2p.register.household"
+    _name = "g2p.register.households"
     _description = "Register Household"
     _inherit = "g2p.registry"
 

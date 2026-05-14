@@ -11,7 +11,7 @@
 
                 <!-- Domain widget for the 'household' type -->
                 <field name="pbms_domain" widget="domain"
-                       options="{'model': 'g2p.register.household', 'allowed_fields': ['priority_rank']}"
+                       options="{'model': 'g2p.register.households', 'allowed_fields': ['priority_rank']}"
                        invisible="target_registry != 'household'"/>
 
                 <!-- Domain widget for the 'family_members' type -->
