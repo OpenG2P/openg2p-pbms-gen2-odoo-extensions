@@ -34,43 +34,54 @@
                 </div>
             </t>
 
+            <t t-if="state.target_registry === 'households'">
+                <div class="mb-2 text-end">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" t-on-click="toggleColumns">
+                        <i t-attf-class="fa #{state.showAllColumns ? 'fa-compress' : 'fa-expand'} me-1"/>
+                        <t t-esc="state.showAllColumns ? 'Show fewer columns' : 'Show all columns'"/>
+                    </button>
+                </div>
+            </t>
+
             <div class="table-responsive rounded border">
-                <table class="table table-hover table-striped align-middle mb-0" style="font-size: 0.9rem;">
+                <table class="table table-hover table-striped align-middle mb-0" style="font-size: 0.78rem;">
                     <thead class="table-dark">
                         <tr>
                             <t t-if="state.target_registry === 'families'">
-                                <th class="px-3 py-2">Functional ID</th>
-                                <th class="px-3 py-2">Family Name</th>
-                                <th class="px-3 py-2">Type of Housing</th>
-                                <th class="px-3 py-2">House Condition</th>
-                                <th class="px-3 py-2">Sanitation Condition</th>
-                                <th class="px-3 py-2">Water Access</th>
-                                <th class="px-3 py-2">Electricity Access</th>
-                                <th class="px-3 py-2">Ethnic Group</th>
-                                <th class="px-3 py-2 text-center"># Children</th>
+                                <th class="px-2 py-1">Functional ID</th>
+                                <th class="px-2 py-1">Family Name</th>
+                                <th class="px-2 py-1">Type of Housing</th>
+                                <th class="px-2 py-1">House Condition</th>
+                                <th class="px-2 py-1">Sanitation Condition</th>
+                                <th class="px-2 py-1">Water Access</th>
+                                <th class="px-2 py-1">Electricity Access</th>
+                                <th class="px-2 py-1">Ethnic Group</th>
+                                <th class="px-2 py-1 text-center"># Children</th>
                             </t>
                             <t t-if="state.target_registry === 'households'">
-                                <th class="px-3 py-2">Internal ID</th>
-                                <th class="px-3 py-2">Functional ID</th>
-                                <th class="px-3 py-2">Head Name</th>
-                                <th class="px-3 py-2">Headship</th>
-                                <th class="px-3 py-2 text-center">Size</th>
-                                <th class="px-3 py-2 text-center">Children U5</th>
-                                <th class="px-3 py-2 text-center">Elderly</th>
-                                <th class="px-3 py-2 text-center">Female</th>
-                                <th class="px-3 py-2 text-center">Male</th>
-                                <th class="px-3 py-2">Dwelling</th>
-                                <th class="px-3 py-2">Tenure</th>
-                                <th class="px-3 py-2 text-center">Rooms</th>
-                                <th class="px-3 py-2 text-end">Overcrowding</th>
-                                <th class="px-3 py-2">Water</th>
-                                <th class="px-3 py-2">Sanitation</th>
-                                <th class="px-3 py-2">Lighting</th>
-                                <th class="px-3 py-2">Cooking Fuel</th>
-                                <th class="px-3 py-2">Address 1</th>
-                                <th class="px-3 py-2">Address 2</th>
-                                <th class="px-3 py-2">Postal</th>
-                                <th class="px-3 py-2">Country</th>
+                                <th class="px-2 py-1">Internal ID</th>
+                                <th class="px-2 py-1">Functional ID</th>
+                                <th class="px-2 py-1">Head Name</th>
+                                <th class="px-2 py-1">Headship</th>
+                                <th class="px-2 py-1 text-center">Size</th>
+                                <th class="px-2 py-1 text-center">Children U5</th>
+                                <th class="px-2 py-1 text-center">Elderly</th>
+                                <th class="px-2 py-1 text-center">Female</th>
+                                <th class="px-2 py-1 text-center">Male</th>
+                                <th class="px-2 py-1">Dwelling</th>
+                                <t t-if="state.showAllColumns">
+                                    <th class="px-2 py-1">Tenure</th>
+                                    <th class="px-2 py-1 text-center">Rooms</th>
+                                    <th class="px-2 py-1 text-end">Overcrowding</th>
+                                    <th class="px-2 py-1">Water</th>
+                                    <th class="px-2 py-1">Sanitation</th>
+                                    <th class="px-2 py-1">Lighting</th>
+                                    <th class="px-2 py-1">Cooking Fuel</th>
+                                    <th class="px-2 py-1">Address 1</th>
+                                    <th class="px-2 py-1">Address 2</th>
+                                    <th class="px-2 py-1">Postal</th>
+                                    <th class="px-2 py-1">Country</th>
+                                </t>
                             </t>
                         </tr>
                     </thead>
@@ -79,59 +90,61 @@
                             <t t-foreach="state.records" t-as="record" t-key="record.internal_record_id || record.functional_record_id || record_index">
                                 <tr>
                                     <t t-if="state.target_registry === 'families'">
-                                        <td class="px-3 py-2 fw-semibold text-primary">
+                                        <td class="px-2 py-1 fw-semibold text-primary">
                                             <t t-esc="record.functional_record_id"/>
                                         </td>
-                                        <td class="px-3 py-2"><t t-esc="record.family_name"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.type_of_housing"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.house_condition"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.sanitation_condition"/></td>
-                                        <td class="px-3 py-2 text-center">
+                                        <td class="px-2 py-1"><t t-esc="record.family_name"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.type_of_housing"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.house_condition"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.sanitation_condition"/></td>
+                                        <td class="px-2 py-1 text-center">
                                             <span t-attf-class="badge #{record.water_access ? 'bg-success' : 'bg-danger'}">
                                                 <t t-esc="record.water_access"/>
                                             </span>
                                         </td>
-                                        <td class="px-3 py-2 text-center">
+                                        <td class="px-2 py-1 text-center">
                                             <span t-attf-class="badge #{record.electricity_access ? 'bg-success' : 'bg-danger'}">
                                                 <t t-esc="record.electricity_access"/>
                                             </span>
                                         </td>
-                                        <td class="px-3 py-2"><t t-esc="record.ethnic_group"/></td>
-                                        <td class="px-3 py-2 text-center">
+                                        <td class="px-2 py-1"><t t-esc="record.ethnic_group"/></td>
+                                        <td class="px-2 py-1 text-center">
                                             <span class="badge bg-info text-dark">
                                                 <t t-esc="record.no_of_children"/>
                                             </span>
                                         </td>
                                     </t>
                                     <t t-if="state.target_registry === 'households'">
-                                        <td class="px-3 py-2 text-muted small"><t t-esc="record.internal_record_id"/></td>
-                                        <td class="px-3 py-2 fw-semibold text-primary"><t t-esc="record.functional_record_id"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.household_head_name"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.headship_type"/></td>
-                                        <td class="px-3 py-2 text-center"><t t-esc="record.size_total"/></td>
-                                        <td class="px-3 py-2 text-center"><t t-esc="record.size_children_u5"/></td>
-                                        <td class="px-3 py-2 text-center"><t t-esc="record.size_elderly"/></td>
-                                        <td class="px-3 py-2 text-center"><t t-esc="record.number_of_female_members"/></td>
-                                        <td class="px-3 py-2 text-center"><t t-esc="record.number_of_male_members"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.dwelling_type"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.tenure_status"/></td>
-                                        <td class="px-3 py-2 text-center"><t t-esc="record.rooms_count"/></td>
-                                        <td class="px-3 py-2 text-end"><t t-esc="record.overcrowding_indicator"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.water_source_type"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.sanitation_type"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.lighting_source"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.cooking_fuel_type"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.address_line_1"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.address_line_2"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.postal_code"/></td>
-                                        <td class="px-3 py-2"><t t-esc="record.country_code"/></td>
+                                        <td class="px-2 py-1 text-muted"><t t-esc="record.internal_record_id"/></td>
+                                        <td class="px-2 py-1 fw-semibold text-primary"><t t-esc="record.functional_record_id"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.household_head_name"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.headship_type"/></td>
+                                        <td class="px-2 py-1 text-center"><t t-esc="record.size_total"/></td>
+                                        <td class="px-2 py-1 text-center"><t t-esc="record.size_children_u5"/></td>
+                                        <td class="px-2 py-1 text-center"><t t-esc="record.size_elderly"/></td>
+                                        <td class="px-2 py-1 text-center"><t t-esc="record.number_of_female_members"/></td>
+                                        <td class="px-2 py-1 text-center"><t t-esc="record.number_of_male_members"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.dwelling_type"/></td>
+                                        <t t-if="state.showAllColumns">
+                                            <td class="px-2 py-1"><t t-esc="record.tenure_status"/></td>
+                                            <td class="px-2 py-1 text-center"><t t-esc="record.rooms_count"/></td>
+                                            <td class="px-2 py-1 text-end"><t t-esc="record.overcrowding_indicator"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.water_source_type"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.sanitation_type"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.lighting_source"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.cooking_fuel_type"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.address_line_1"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.address_line_2"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.postal_code"/></td>
+                                            <td class="px-2 py-1"><t t-esc="record.country_code"/></td>
+                                        </t>
                                     </t>
                                 </tr>
                             </t>
                         </t>
                         <t t-else="">
                             <tr>
-                                <td t-if="state.target_registry === 'households'" colspan="21" class="text-center text-muted py-4">
+                                <td t-if="state.target_registry === 'households'" t-att-colspan="state.showAllColumns ? 21 : 10" class="text-center text-muted py-4">
                                     <i class="fa fa-inbox fa-2x d-block mb-2"/>
                                     No records found.
                                 </td>
