@@ -31,7 +31,7 @@ export class G2PBeneficiariesComponent extends Component {
             totalPages: 1,
             target_registry: recordData.target_registry || null,
             searched: false,
-            domain: [],
+            domain: "[]",
         });
         this.orm = useService("orm");
         console.log(this);
@@ -43,7 +43,7 @@ export class G2PBeneficiariesComponent extends Component {
     }
 
     getEvaluatedDomain() {
-        return JSON.stringify(this.state.domain);
+        return this.state.domain;
     }
 
     searchRegistrants() {
