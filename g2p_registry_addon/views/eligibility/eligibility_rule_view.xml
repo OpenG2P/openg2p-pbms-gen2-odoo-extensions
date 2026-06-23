@@ -11,7 +11,7 @@
 
                 <!-- Domain widget for the 'farmer' type -->
                 <field name="pbms_domain" widget="domain"
-                       options="{'model': 'g2p.farmer.registry'}"
+                       options="{'model': 'g2p.register.farmer'}"
                        invisible="target_registry != 'farmer'"/>
 
                 <!-- Domain widget for the 'household' type -->
