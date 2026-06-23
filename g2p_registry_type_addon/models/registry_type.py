@@ -5,7 +5,7 @@ from odoo import models, fields
 class G2PTargetModelMapping:
 
     MODEL_MAPPING = {
-        "farmer": "g2p.farmer.registry",
+        "farmer": "g2p.register.farmer",
         "households": "g2p.register.households"
     }
 

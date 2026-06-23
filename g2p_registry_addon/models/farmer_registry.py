@@ -4,7 +4,7 @@ from .registry import G2PRegistry
 
 
 class G2PFarmerRegistry(models.Model):
-    _name = "g2p.farmer.registry"
+    _name = "g2p.register.farmer"
     _description = "Farmer Registry"
     _inherit = "g2p.registry"
 
