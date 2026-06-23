@@ -47,16 +47,17 @@
                 <table class="table table-hover table-striped align-middle mb-0" style="font-size: 0.78rem;">
                     <thead class="table-dark">
                         <tr>
-                            <t t-if="state.target_registry === 'families'">
+                            <t t-if="state.target_registry === 'farmer'">
+                                <th class="px-2 py-1">Internal ID</th>
                                 <th class="px-2 py-1">Functional ID</th>
-                                <th class="px-2 py-1">Family Name</th>
-                                <th class="px-2 py-1">Type of Housing</th>
-                                <th class="px-2 py-1">House Condition</th>
-                                <th class="px-2 py-1">Sanitation Condition</th>
-                                <th class="px-2 py-1">Water Access</th>
-                                <th class="px-2 py-1">Electricity Access</th>
-                                <th class="px-2 py-1">Ethnic Group</th>
-                                <th class="px-2 py-1 text-center"># Children</th>
+                                <th class="px-2 py-1">First Name</th>
+                                <th class="px-2 py-1">Last Name</th>
+                                <th class="px-2 py-1">Gender</th>
+                                <th class="px-2 py-1 text-center">Est. Age</th>
+                                <th class="px-2 py-1 text-center">Disabled</th>
+                                <th class="px-2 py-1">Source of Income</th>
+                                <th class="px-2 py-1">Education Level</th>
+                                <th class="px-2 py-1">Country</th>
                             </t>
                             <t t-if="state.target_registry === 'households'">
                                 <th class="px-2 py-1">Internal ID</th>
@@ -89,30 +90,21 @@
                         <t t-if="state.records and state.records.length">
                             <t t-foreach="state.records" t-as="record" t-key="record.internal_record_id || record.functional_record_id || record_index">
                                 <tr>
-                                    <t t-if="state.target_registry === 'families'">
-                                        <td class="px-2 py-1 fw-semibold text-primary">
-                                            <t t-esc="record.functional_record_id"/>
-                                        </td>
-                                        <td class="px-2 py-1"><t t-esc="record.family_name"/></td>
-                                        <td class="px-2 py-1"><t t-esc="record.type_of_housing"/></td>
-                                        <td class="px-2 py-1"><t t-esc="record.house_condition"/></td>
-                                        <td class="px-2 py-1"><t t-esc="record.sanitation_condition"/></td>
+                                    <t t-if="state.target_registry === 'farmer'">
+                                        <td class="px-2 py-1 text-muted"><t t-esc="record.internal_record_id"/></td>
+                                        <td class="px-2 py-1 fw-semibold text-primary"><t t-esc="record.functional_record_id"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.first_name"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.last_name"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.gender"/></td>
+                                        <td class="px-2 py-1 text-center"><t t-esc="record.estimated_age"/></td>
                                         <td class="px-2 py-1 text-center">
-                                            <span t-attf-class="badge #{record.water_access ? 'bg-success' : 'bg-danger'}">
-                                                <t t-esc="record.water_access"/>
+                                            <span t-attf-class="badge #{record.disabled ? 'bg-warning' : 'bg-secondary'}">
+                                                <t t-esc="record.disabled ? 'Yes' : 'No'"/>
                                             </span>
                                         </td>
-                                        <td class="px-2 py-1 text-center">
-                                            <span t-attf-class="badge #{record.electricity_access ? 'bg-success' : 'bg-danger'}">
-                                                <t t-esc="record.electricity_access"/>
-                                            </span>
-                                        </td>
-                                        <td class="px-2 py-1"><t t-esc="record.ethnic_group"/></td>
-                                        <td class="px-2 py-1 text-center">
-                                            <span class="badge bg-info text-dark">
-                                                <t t-esc="record.no_of_children"/>
-                                            </span>
-                                        </td>
+                                        <td class="px-2 py-1"><t t-esc="record.source_of_income"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.education_level"/></td>
+                                        <td class="px-2 py-1"><t t-esc="record.country_code"/></td>
                                     </t>
                                     <t t-if="state.target_registry === 'households'">
                                         <td class="px-2 py-1 text-muted"><t t-esc="record.internal_record_id"/></td>
@@ -148,7 +140,7 @@
                                     <i class="fa fa-inbox fa-2x d-block mb-2"/>
                                     No records found.
                                 </td>
-                                <td t-elif="state.target_registry === 'families'" colspan="9" class="text-center text-muted py-4">
+                                <td t-elif="state.target_registry === 'farmer'" colspan="10" class="text-center text-muted py-4">
                                     <i class="fa fa-inbox fa-2x d-block mb-2"/>
                                     No records found.
                                 </td>
