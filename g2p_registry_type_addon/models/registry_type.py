@@ -5,9 +5,8 @@ from odoo import models, fields
 class G2PTargetModelMapping:
 
     MODEL_MAPPING = {
-        "student": "g2p.student.registry",
-        "farmer": "g2p.farmer.registry",
-        "families": "g2p.register.families",
+        "farmer": "g2p.register.farmer",
+        "households": "g2p.register.households"
     }
 
     @classmethod
@@ -17,8 +16,7 @@ class G2PTargetModelMapping:
 
 class G2PRegistryType(Enum):
     FARMER = "farmer"
-    STUDENT = "student"
-    FAMILIES = "families"
+    HOUSEHOLDS = "households"
 
     @classmethod
     def selection(cls):

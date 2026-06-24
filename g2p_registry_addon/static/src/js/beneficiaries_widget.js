@@ -32,6 +32,7 @@ export class G2PBeneficiariesComponent extends Component {
             target_registry: recordData.target_registry || null,
             searched: false,
             domain: "[]",
+            showAllColumns: false,
         });
         this.orm = useService("orm");
         console.log(this);
@@ -89,6 +90,10 @@ export class G2PBeneficiariesComponent extends Component {
             this.state.page--;
             await this._fetchRecords();
         }
+    }
+
+    toggleColumns() {
+        this.state.showAllColumns = !this.state.showAllColumns;
     }
 }
 
