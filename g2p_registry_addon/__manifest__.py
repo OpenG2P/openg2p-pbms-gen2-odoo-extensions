@@ -1,6 +1,6 @@
 {
     "name": "PBMS Registry Addon",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "summary": "OpenG2P Registry Addon",
     "description": "OpenG2P Registry Addon",
     "category": "G2P",
