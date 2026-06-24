@@ -1,7 +1,7 @@
 {
     "name": "PBMS Theme",
     "category": "G2P",
-    "version": "3.0.0",
+    "version": "3.1.1",
     "sequence": 1,
     "author": "G2P",
     "website": "https://openg2p.org",
